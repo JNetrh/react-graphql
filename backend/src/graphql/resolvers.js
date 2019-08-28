@@ -3,14 +3,14 @@ import { getCourse, getCourses } from '../modules/courses/getCourse';
 import { updateCourseTopic } from '../modules/courses/updateCourse';
 
 // GraphQL: Resolvers
-  const RESOLVERS = {    
-    Query: {      
-        getCourse,
-        getCourses,
+  const resolvers = {    
+    Query: {
+        getCourse: (obj, args) => getCourse(args),
+        getCourses: (obj, args) => getCourses(args),
     },
     Mutation: {
-        updateCourseTopic
+        updateCourseTopic: (obj, args) => updateCourseTopic(args),
     }
 };
 // Exports
-export default RESOLVERS;
+export default resolvers;

@@ -1,6 +1,6 @@
 import { coursesData } from '../../mockData/courses';
 
-export const getCourse = ({args}) => {
+export const getCourse = (args) => {
     console.log(args);
     const id = args.id;
     return coursesData.filter(course => {
@@ -8,7 +8,7 @@ export const getCourse = ({args}) => {
     })[0];
 }
 
-export const getCourses = ({args}) => {
+export const getCourses = (args) => {
     console.log(args);
     if(args.topic) {
         const topic = args.topic;

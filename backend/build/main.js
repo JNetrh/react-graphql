@@ -103,17 +103,17 @@ __webpack_require__.r(__webpack_exports__);
 
  // GraphQL: Resolvers
 
-const RESOLVERS = {
+const resolvers = {
   Query: {
-    getCourse: _modules_courses_getCourse__WEBPACK_IMPORTED_MODULE_0__["getCourse"],
-    getCourses: _modules_courses_getCourse__WEBPACK_IMPORTED_MODULE_0__["getCourses"]
+    getCourse: (obj, args) => Object(_modules_courses_getCourse__WEBPACK_IMPORTED_MODULE_0__["getCourse"])(args),
+    getCourses: (obj, args) => Object(_modules_courses_getCourse__WEBPACK_IMPORTED_MODULE_0__["getCourses"])(args)
   },
   Mutation: {
-    updateCourseTopic: _modules_courses_updateCourse__WEBPACK_IMPORTED_MODULE_1__["updateCourseTopic"]
+    updateCourseTopic: (obj, args) => Object(_modules_courses_updateCourse__WEBPACK_IMPORTED_MODULE_1__["updateCourseTopic"])(args)
   }
 }; // Exports
 
-/* harmony default export */ __webpack_exports__["default"] = (RESOLVERS);
+/* harmony default export */ __webpack_exports__["default"] = (resolvers);
 
 /***/ }),
 
@@ -165,7 +165,7 @@ __webpack_require__.r(__webpack_exports__);
 // Imports: GraphQL
  // GraphQL: TypeDefs
 
-const TYPEDEFS = apollo_server_express__WEBPACK_IMPORTED_MODULE_0__["gql"]`
+const typeDefs = apollo_server_express__WEBPACK_IMPORTED_MODULE_0__["gql"]`
     type Query {
         getCourse(id: Int!): Course
         getCourses(topic: String): [Course]
@@ -183,7 +183,7 @@ const TYPEDEFS = apollo_server_express__WEBPACK_IMPORTED_MODULE_0__["gql"]`
     }
 `; // Exports
 
-/* harmony default export */ __webpack_exports__["default"] = (TYPEDEFS);
+/* harmony default export */ __webpack_exports__["default"] = (typeDefs);
 
 /***/ }),
 
@@ -267,18 +267,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getCourses", function() { return getCourses; });
 /* harmony import */ var _mockData_courses__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../mockData/courses */ "./src/mockData/courses.js");
 
-const getCourse = ({
-  args
-}) => {
+const getCourse = args => {
   console.log(args);
   const id = args.id;
   return _mockData_courses__WEBPACK_IMPORTED_MODULE_0__["coursesData"].filter(course => {
     return course.id == id;
   })[0];
 };
-const getCourses = ({
-  args
-}) => {
+const getCourses = args => {
   console.log(args);
 
   if (args.topic) {

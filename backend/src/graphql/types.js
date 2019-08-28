@@ -1,7 +1,7 @@
 // Imports: GraphQL
 import { gql } from 'apollo-server-express';
 // GraphQL: TypeDefs
-const TYPEDEFS = gql`
+const typeDefs = gql`
     type Query {
         getCourse(id: Int!): Course
         getCourses(topic: String): [Course]
@@ -19,4 +19,4 @@ const TYPEDEFS = gql`
     }
 `;
 // Exports
-export default TYPEDEFS;
+export default typeDefs;
