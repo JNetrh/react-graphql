@@ -1,0 +1,22 @@
+// Imports: GraphQL
+import { gql } from 'apollo-server-express';
+// GraphQL: TypeDefs
+const TYPEDEFS = gql`
+    type Query {
+        getCourse(id: Int!): Course
+        getCourses(topic: String): [Course]
+    }
+    type Course {
+        id: Int
+        title: String
+        author: String
+        description: String
+        topic: String
+        url: String
+    }
+    type Mutation {
+        updateCourseTopic(id: Int!, topic: String!): Course
+    }
+`;
+// Exports
+export default TYPEDEFS;
