@@ -205,8 +205,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const app = express__WEBPACK_IMPORTED_MODULE_0___default()(); // app.use(cors());
-
+const app = express__WEBPACK_IMPORTED_MODULE_0___default()();
+app.use(cors__WEBPACK_IMPORTED_MODULE_2___default()());
 app.use(express__WEBPACK_IMPORTED_MODULE_0___default.a.static('public'));
 _graphql_schema_js__WEBPACK_IMPORTED_MODULE_1__["default"].applyMiddleware({
   app

@@ -4,7 +4,7 @@ import { graphql } from 'react-apollo'
 import Courses from './components/Courses';
 import './App.css';
 
-export default class App extends Component {
+class App extends Component {
   render() {
     return (
       <Courses {...this.props}></Courses>
@@ -13,10 +13,10 @@ export default class App extends Component {
   }
 }
 
-/* export default graphql(
+export default graphql(
   gql`
   {
-    caourses {
+    getCourses {
         id
         title
         author
@@ -24,6 +24,6 @@ export default class App extends Component {
         topic
         url
     }
-}
+  }
   `,
-)(App) */
+)(App)
