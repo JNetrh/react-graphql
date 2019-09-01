@@ -5,7 +5,8 @@ export const coursesData = [
         author: 'Andrew Mead, Rob Percival',
         description: 'Learn Node.js by building real-world applications with Node, Express, MongoDB, Mocha, and more!',
         topic: 'Node.js',
-        url: 'https://codingthesmartway.com/courses/nodejs/'
+        url: 'https://codingthesmartway.com/courses/nodejs/',
+        dificulty: 1,
     },
     {
         id: 2,
@@ -13,7 +14,8 @@ export const coursesData = [
         author: 'Brad Traversy',
         description: 'Learn by example building & deploying real-world Node.js applications from absolute scratch',
         topic: 'Node.js',
-        url: 'https://codingthesmartway.com/courses/nodejs-express-mongodb/'
+        url: 'https://codingthesmartway.com/courses/nodejs-express-mongodb/',
+        dificulty: 5,
     },
     {
         id: 3,
@@ -21,6 +23,7 @@ export const coursesData = [
         author: 'Anthony Alicea',
         description: 'An advanced JavaScript course for everyone! Scope, closures, prototypes, this, build your own framework, and more.',
         topic: 'JavaScript',
-        url: 'https://codingthesmartway.com/courses/understand-javascript/'
+        url: 'https://codingthesmartway.com/courses/understand-javascript/',
+        dificulty: 5,
     }
 ]

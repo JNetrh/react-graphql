@@ -105,11 +105,12 @@ __webpack_require__.r(__webpack_exports__);
 
 const resolvers = {
   Query: {
-    getCourse: (obj, args) => Object(_modules_courses_getCourse__WEBPACK_IMPORTED_MODULE_0__["getCourse"])(args),
-    getCourses: (obj, args) => Object(_modules_courses_getCourse__WEBPACK_IMPORTED_MODULE_0__["getCourses"])(args)
+    getCourse: _modules_courses_getCourse__WEBPACK_IMPORTED_MODULE_0__["getCourse"],
+    getCourses: _modules_courses_getCourse__WEBPACK_IMPORTED_MODULE_0__["getCourses"],
+    getCoursesByDificulty: _modules_courses_getCourse__WEBPACK_IMPORTED_MODULE_0__["getCoursesByDificulty"]
   },
   Mutation: {
-    updateCourseTopic: (obj, args) => Object(_modules_courses_updateCourse__WEBPACK_IMPORTED_MODULE_1__["updateCourseTopic"])(args)
+    updateCourseTopic: _modules_courses_updateCourse__WEBPACK_IMPORTED_MODULE_1__["updateCourseTopic"]
   }
 }; // Exports
 
@@ -169,6 +170,7 @@ const typeDefs = apollo_server_express__WEBPACK_IMPORTED_MODULE_0__["gql"]`
     type Query {
         getCourse(id: Int!): Course
         getCourses(topic: String): [Course]
+        getCoursesByDificulty(dificulty: Int): [Course]
     }
     type Course {
         id: Int
@@ -177,6 +179,7 @@ const typeDefs = apollo_server_express__WEBPACK_IMPORTED_MODULE_0__["gql"]`
         description: String
         topic: String
         url: String
+        dificulty: Int
     }
     type Mutation {
         updateCourseTopic(id: Int!, topic: String!): Course
@@ -235,21 +238,24 @@ const coursesData = [{
   author: 'Andrew Mead, Rob Percival',
   description: 'Learn Node.js by building real-world applications with Node, Express, MongoDB, Mocha, and more!',
   topic: 'Node.js',
-  url: 'https://codingthesmartway.com/courses/nodejs/'
+  url: 'https://codingthesmartway.com/courses/nodejs/',
+  dificulty: 1
 }, {
   id: 2,
   title: 'Node.js, Express & MongoDB Dev to Deployment',
   author: 'Brad Traversy',
   description: 'Learn by example building & deploying real-world Node.js applications from absolute scratch',
   topic: 'Node.js',
-  url: 'https://codingthesmartway.com/courses/nodejs-express-mongodb/'
+  url: 'https://codingthesmartway.com/courses/nodejs-express-mongodb/',
+  dificulty: 5
 }, {
   id: 3,
   title: 'JavaScript: Understanding The Weird Parts',
   author: 'Anthony Alicea',
   description: 'An advanced JavaScript course for everyone! Scope, closures, prototypes, this, build your own framework, and more.',
   topic: 'JavaScript',
-  url: 'https://codingthesmartway.com/courses/understand-javascript/'
+  url: 'https://codingthesmartway.com/courses/understand-javascript/',
+  dificulty: 5
 }];
 
 /***/ }),
@@ -258,28 +264,37 @@ const coursesData = [{
 /*!******************************************!*\
   !*** ./src/modules/courses/getCourse.js ***!
   \******************************************/
-/*! exports provided: getCourse, getCourses */
+/*! exports provided: getCourse, getCourses, getCoursesByDificulty */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getCourse", function() { return getCourse; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getCourses", function() { return getCourses; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getCoursesByDificulty", function() { return getCoursesByDificulty; });
 /* harmony import */ var _mockData_courses__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../mockData/courses */ "./src/mockData/courses.js");
 
-const getCourse = args => {
+const getCourse = (obj, args) => {
   console.log(args);
   const id = args.id;
   return _mockData_courses__WEBPACK_IMPORTED_MODULE_0__["coursesData"].filter(course => {
     return course.id == id;
   })[0];
 };
-const getCourses = args => {
+const getCourses = (obj, args) => {
   console.log(args);
 
   if (args.topic) {
     const topic = args.topic;
     return _mockData_courses__WEBPACK_IMPORTED_MODULE_0__["coursesData"].filter(course => course.topic === topic);
+  } else {
+    return _mockData_courses__WEBPACK_IMPORTED_MODULE_0__["coursesData"];
+  }
+};
+const getCoursesByDificulty = (obj, args) => {
+  if (args.dificulty) {
+    const dificulty = args.dificulty;
+    return _mockData_courses__WEBPACK_IMPORTED_MODULE_0__["coursesData"].filter(course => course.dificulty === dificulty);
   } else {
     return _mockData_courses__WEBPACK_IMPORTED_MODULE_0__["coursesData"];
   }
@@ -299,7 +314,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateCourseTopic", function() { return updateCourseTopic; });
 /* harmony import */ var _mockData_courses__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../mockData/courses */ "./src/mockData/courses.js");
 
-const updateCourseTopic = ({
+const updateCourseTopic = (obj, {
   id,
   topic
 }) => {

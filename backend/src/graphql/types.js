@@ -5,6 +5,7 @@ const typeDefs = gql`
     type Query {
         getCourse(id: Int!): Course
         getCourses(topic: String): [Course]
+        getCoursesByDificulty(dificulty: Int): [Course]
     }
     type Course {
         id: Int
@@ -13,6 +14,7 @@ const typeDefs = gql`
         description: String
         topic: String
         url: String
+        dificulty: Int
     }
     type Mutation {
         updateCourseTopic(id: Int!, topic: String!): Course

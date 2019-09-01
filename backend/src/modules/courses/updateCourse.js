@@ -1,6 +1,6 @@
 import { coursesData } from '../../mockData/courses';
 
-export const updateCourseTopic = ({id, topic}) => {
+export const updateCourseTopic = (obj, {id, topic}) => {
     coursesData.map(course => {
         if (course.id === id) {
             course.topic = topic;

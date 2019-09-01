@@ -1,15 +1,16 @@
 // Imports:
-import { getCourse, getCourses } from '../modules/courses/getCourse';
+import { getCourse, getCourses, getCoursesByDificulty } from '../modules/courses/getCourse';
 import { updateCourseTopic } from '../modules/courses/updateCourse';
 
 // GraphQL: Resolvers
   const resolvers = {    
     Query: {
-        getCourse: (obj, args) => getCourse(args),
-        getCourses: (obj, args) => getCourses(args),
+        getCourse,
+        getCourses,
+        getCoursesByDificulty
     },
     Mutation: {
-        updateCourseTopic: (obj, args) => updateCourseTopic(args),
+        updateCourseTopic,
     }
 };
 // Exports
